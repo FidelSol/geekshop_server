@@ -1,0 +1,10 @@
+{
+        "title": "GeekShop - каталог",
+        "header": "Добро пожаловать на сайт!",
+        "username": "Иван Иванов",
+        "products": [
+            {"name": "Худи черного цвета с монограммами adidas Originals", "price": 6090},
+            {"name": "Синяя куртка The North Face", "price": 23725},
+            {"name": "Коричневый спортивный oversized-топ ASOS DESIGN", "price": 3390}
+        ]
+}
