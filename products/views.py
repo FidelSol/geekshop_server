@@ -15,6 +15,7 @@ def contact(request):
 
 # index
 def products(request):
+    context = {'title': 'GeekShop - Продукты'}
     path = apps.get_app_config('products').path
     with open(path + '\\fixtures\\products.json', 'r', encoding='UTF8') as f:
         context = json.load(f)
