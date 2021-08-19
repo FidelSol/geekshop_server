@@ -58,6 +58,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
+                'geekshop_server.context_processors.base_context.menu',
 
             ],
         },
@@ -132,3 +133,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+FIXTURE_DIRS = (
+   os.path.join(BASE_DIR, '/products/fixtures'),
+)
