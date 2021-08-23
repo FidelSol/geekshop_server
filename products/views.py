@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.apps import apps
 
 # index
+from products.models import ProductCategory, Product
+
 def index(request):
     context = {'title': 'GeekShop'}
     return render(request, 'index.html', context)
@@ -15,8 +17,7 @@ def contact(request):
 
 # index
 def products(request):
-    path = apps.get_app_config('products').path
-    with open(path + '\\fixtures\\products.json', 'r', encoding='UTF8') as f:
-        context = json.load(f)
-    context['title'] = 'GeekShop - Продукты'
+    catedories = ProductCategory.objects.all()
+    products = Product.objects.all()
+    context = {'title': 'GeekShop - Продукты', "categories": catedories, "products": products}
     return render(request, 'products.html', context)
