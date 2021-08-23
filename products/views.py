@@ -6,7 +6,6 @@ from django.apps import apps
 # index
 from products.models import ProductCategory, Product
 
-
 def index(request):
     context = {'title': 'GeekShop'}
     return render(request, 'index.html', context)
