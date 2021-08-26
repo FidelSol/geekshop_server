@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponseRedirect
 
 from products.models import Product
-from buskets.models import Basket
+from baskets.models import Basket
 
 
 def basket_add(request, product_id):

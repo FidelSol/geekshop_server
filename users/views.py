@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.contrib import messages
 
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from buskets.models import Basket
+from baskets.models import Basket
 
 
 def login(request):

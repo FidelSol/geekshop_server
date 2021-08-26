@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
     path('users/', include('users.urls', namespace='users')),
-    path('buskets/', include('buskets.urls', namespace='buskets')),
+    path('baskets/', include('baskets.urls', namespace='baskets')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
