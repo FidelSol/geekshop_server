@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 
 from users.models import User
 from products.models import Product
@@ -15,3 +16,9 @@ class Basket(models.Model):
 
     def sum(self):
         return self.product.price * self.quantity
+
+    def total_quantity(selfself):
+        return len(Basket.objects.all())
+
+    def total_price(selfself):
+        return Basket.objects.aggregate(average_price=Sum('price'))
