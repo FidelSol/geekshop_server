@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 import mimetypes
 
+from django.urls import reverse_lazy
+
 mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -144,3 +146,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 FIXTURE_DIRS = (
    os.path.join(BASE_DIR, '/products/fixtures'),
 )
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/users/login/'
