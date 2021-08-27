@@ -29,7 +29,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'products'
+    'products',
+    'users',
+    'baskets'
 ]
 
 MIDDLEWARE = [
@@ -43,6 +45,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'geekshop_server.urls'
+
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {
