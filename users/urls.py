@@ -8,4 +8,5 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('profile/', profile, name='profile'),
     path('logout/', logout, name='logout'),
+    path('verify/(<email>)/(<activation_key>)/', verify, name='verify'),
 ]

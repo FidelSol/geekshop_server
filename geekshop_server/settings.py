@@ -150,3 +150,15 @@ FIXTURE_DIRS = (
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/users/login/'
+
+# email config
+DOMAIN_NAME = 'http://localhost:8000'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '25'
+EMAIL_HOST_USER = 'hr@legis-s.ru'
+EMAIL_HOST_PASSWORD = '******'
+EMAIL_USE_SSL = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = 'tmp/email-messages/'
+
