@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import auth
 from django.contrib import messages
 
-from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, UserProfileEditForm
 from baskets.models import Basket
 
 from django.core.mail import send_mail
@@ -85,7 +86,7 @@ def verify(request, email, activation_key):
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             user.is_active = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return render(request, 'users/verification.html')
         else:
             print(f'error activation user: {user}')
@@ -94,3 +95,28 @@ def verify(request, email, activation_key):
         print(f'error activation user : {e.args}')
         return render(request, 'users/verification.html')
         # return HttpResponseRedirect(reverse('index'))
+
+
+@transaction.atomic
+def edit(request):
+    title = 'редактирование'
+
+    if request.method == 'POST':
+        edit_form = UserProfileForm(request.POST, request.FILES, instance=request.user)
+        profile_form = UserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
+        if edit_form.is_valid() and profile_form.is_valid():
+            edit_form.save()
+            return HttpResponseRedirect(reverse('auth:edit'))
+    else:
+        edit_form = UserProfileForm(instance=request.user)
+        profile_form = UserProfileEditForm(
+            instance=request.user.shopuserprofile
+        )
+
+    content = {
+        'title': title,
+        'edit_form': edit_form,
+        'profile_form': profile_form
+    }
+
+    return render(request, 'users/edit.html', content)
