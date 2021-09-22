@@ -9,6 +9,7 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
     path('baskets/', include('baskets.urls', namespace='baskets')),
     path('admin-staff/', include('admins.urls', namespace='admins')),
+    path('orders/', include('orders.urls', namespace='orders')),
     path('', include('social_django.urls', namespace='social')),
 ]
 
