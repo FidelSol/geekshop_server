@@ -7,5 +7,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('products/', views.ProductList.as_view(), name='products'),
     # path('page/<int:page>/', views.products, name='page'),
-
+    path('product/<int:pk>/price/', views.get_product_price)
 ]

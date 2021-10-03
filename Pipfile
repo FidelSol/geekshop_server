@@ -6,6 +6,12 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
+social-auth-app-django = "*"
+requests = "*"
+psycopg2 = "*"
+sqlparse = "*"
+gunicorn = "*"
+asgiref = "*"
 
 [dev-packages]
 
