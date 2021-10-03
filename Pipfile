@@ -9,6 +9,8 @@ pillow = "*"
 social-auth-app-django = "*"
 requests = "*"
 psycopg2 = "*"
+sqlparse = "*"
+gunicorn = "*"
 
 [dev-packages]
 
