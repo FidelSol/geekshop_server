@@ -8,6 +8,8 @@ django = "*"
 pillow = "*"
 social-auth-app-django = "*"
 requests = "*"
+django-debug-toolbar = "*"
+django-debug-toolbar-template-profiler = "*"
 
 [dev-packages]
 
