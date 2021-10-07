@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'orders',
     'debug_toolbar',
     'template_profiler_panel',
+    'django_extensions',
 
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,8 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'social_django.middleware.SocialAuthExceptionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
 
 ROOT_URLCONF = 'geekshop_server.urls'
@@ -73,8 +74,6 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
                 'geekshop_server.context_processors.base_context.menu',
-                #'social_django.context_processors.backends',
-                #'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -200,4 +199,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

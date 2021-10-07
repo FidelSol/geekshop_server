@@ -68,6 +68,7 @@ class OrderItem(models.Model):
                                 on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(verbose_name='количество',
                                            default=0)
+    is_active = models.BooleanField(db_index=True, default=True)
 
     def get_product_cost(self):
         return self.product.price * self.quantity

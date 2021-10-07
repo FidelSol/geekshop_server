@@ -58,7 +58,7 @@ class ProductList(ListView):
         category_id = self.kwargs.get('category_id', '')
         q = super().get_queryset()
         if category_id:
-            result = q.filter(category_id=category_id)
+            result = q.select_related('category').filter(category_id=category_id)
         else:
-            result = q
+            result = q.select_related('category')
         return result
