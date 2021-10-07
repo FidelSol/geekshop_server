@@ -20,7 +20,7 @@ SECRET_KEY = 'django-insecure-klgxr!j(s95b8p#ui8-7m-5(!7b+#4gxfgn8u=@22(8q_ng6gd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '134.0.119.11']
 
 
 # Application definition
@@ -201,4 +201,19 @@ AUTHENTICATION_BACKENDS = (
 
 INTERNAL_IPS = [
     '127.0.0.1',
+    '134.0.119.11'
 ]
+
+if os.name == 'posix':
+   CACHE_MIDDLEWARE_ALIAS = 'default'
+   CACHE_MIDDLEWARE_SECONDS = 120
+   CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'
+
+   CACHES = {
+       'default': {
+           'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+           'LOCATION': '127.0.0.1:11211',
+       }
+   }
+
+LOW_CACHE = True

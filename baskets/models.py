@@ -3,7 +3,7 @@ from django.db.models import Sum
 
 from users.models import User
 from products.models import Product
-
+from django.utils.functional import cached_property
 
 class Basket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -24,3 +24,7 @@ class Basket(models.Model):
     def total_sum(self):
         baskets = Basket.objects.filter(user=self.user)
         return sum(basket.sum() for basket in baskets)
+
+    @cached_property
+    def get_items_cached(self):
+        return self.user.basket.select_related()

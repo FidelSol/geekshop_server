@@ -1,5 +1,6 @@
 {% extends 'orders/base.html' %}
 {% load static %}
+{% load cache %}
 
 {% block content %}
    {% include 'orders/includes/inc_order_summary.html' %}
@@ -15,7 +16,18 @@
                        <tr>
                            {% for field in form.visible_fields %}
                                <th class="{% cycle 'td1' 'td2' 'td3' %} order formset_td">
-                                   {{ field.label|capfirst }}
+                               {% if field.name != 'price' %}
+                                    {% if field.name == 'product' %}
+                                        {% cache 3600 orderitemform_product field.value %}
+                                            {{ field }}
+                                        {% endcache %}
+                                    {% else %}
+                                        {{ field }}
+                                    {% endif %}
+                                {% else %}
+                                    {{ field }}
+                               {%  endif %}
+
                                </th>
                            {% endfor %}
                        </tr>
